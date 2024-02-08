@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .head-text {
+            font-size: 22px;
+            font-weight: 600;
+            color: #0D9276;
+        }
+
+        .product {
+            width: 30%;
+            border: 2px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: height 0.3s ease-in-out;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .range {
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            border: 2px solid gray;
+        }
+
+        .product.expanded {
+            border: 2px solid #0D9276;
+            background-color: rgba(13, 146, 118, 0.1);
+        }
+
+        .product.expanded .range {
+            background-color: green;
+        }
+
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            color: #333;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .pair-num {
+            font-size: 15px;
+        }
+
+        .discount {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .discount2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .discount2 span {
+            color: #0D9276;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            overflow: hidden;
+            gap: 20px;
+            max-height: 0;
+            width: 50%;
+            margin-left: 20px;
+        }
+
+        .num-option {
+            font-size: 17px;
+            font-weight: 600;
+            color: gray;
+        }
+
+        .size-options,
+        .color-options {
+            width: 100%;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .option-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .option-select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart-btn {
+            background-color: #0D9276;
+            color: #fff;
+            padding: 13px;
+            border: none;
+            cursor: pointer;
+            width: 33%;
+            margin-top: 20px;
+            font-size: 19px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="head-text">Bundle & Save</h1>
+
+    <div class="product" onclick="toggleCart(this)">
+        <div class="product-details">
+            <div class="price">
+                <div class="range"></div>
+                <div>
+                    <p class="pair-num">1 Pair</p>
+                    <p class="product-name">DKK 195.0</p>
+                </div>
+            </div>
+            <div class="discount">50% OFF</div>
+        </div>
+        <div class="options">
+            <p class="num-option">#1</p>
+            <div class="size-options">
+                <div class="option-label">Size</div>
+                <select class="option-select">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            </div>
+            <div class="color-options">
+                <div class="option-label">Color</div>
+                <select class="option-select">
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <!-- Add more color options as needed -->
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="product" onclick="toggleCart(this)">
+        <div class="product-details">
+            <div class="price">
+                <div class="range"></div>
+                <div>
+                    <p class="pair-num">1 Pair</p>
+                    <p class="product-name">DKK 195.0</p>
+                </div>
+            </div>
+            <div class="discount2">
+                <span>Most Popular </span> 40% OFF
+            </div>
+        </div>
+        <div class="options">
+            <p class="num-option">#1</p>
+            <div class="size-options">
+                <div class="option-label">Size</div>
+                <select class="option-select">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            </div>
+            <div class="color-options">
+                <div class="option-label">Color</div>
+                <select class="option-select">
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <!-- Add more color options as needed -->
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="product" onclick="toggleCart(this)">
+        <div class="product-details">
+            <div class="price">
+                <div class="range"></div>
+                <div>
+                    <p class="pair-num">1 Pair</p>
+                    <p class="product-name">DKK 195.0</p>
+                </div>
+            </div>
+            <div class="discount">60% OFF</div>
+        </div>
+        <div class="options">
+            <p class="num-option">#1</p>
+            <div class="size-options">
+                <div class="option-label">Size</div>
+                <select class="option-select">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            </div>
+            <div class="color-options">
+                <div class="option-label">Color</div>
+                <select class="option-select">
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <!-- Add more color options as needed -->
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <button class="add-to-cart-btn" onclick="addToCart()">+ Add to Cart</button>
+
+    <script>
+        let currentExpandedProduct = null;
+
+        function toggleCart(selectedProduct) {
+            if (currentExpandedProduct !== selectedProduct) {
+                // Collapse the currently expanded product
+                if (currentExpandedProduct) {
+                    currentExpandedProduct.classList.remove('expanded');
+                    hideOptions(currentExpandedProduct);
+                }
+
+                // Expand the clicked product
+                selectedProduct.classList.toggle('expanded');
+                showOptions(selectedProduct);
+                currentExpandedProduct = selectedProduct;
+            }
+        }
+
+        function showOptions(product) {
+            const options = product.querySelector('.options');
+            const sizeOptions = product.querySelector('.size-options');
+            const colorOptions = product.querySelector('.color-options');
+
+            options.style.maxHeight = 100 + "px";
+            sizeOptions.style.maxHeight = sizeOptions.scrollHeight + "px";
+            colorOptions.style.maxHeight = colorOptions.scrollHeight + "px";
+        }
+
+        function hideOptions(product) {
+            const options = product.querySelector('.options');
+            const sizeOptions = product.querySelector('.size-options');
+            const colorOptions = product.querySelector('.color-options');
+
+            options.style.maxHeight = null;
+            sizeOptions.style.maxHeight = null;
+            colorOptions.style.maxHeight = null;
+        }
+
+        function addToCart() {
+            // Implement your logic for adding the selected product to the cart
+            console.log("Product added to cart!");
+        }
+    </script>
+</body>
+
+</html>
